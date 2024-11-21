@@ -1,0 +1,60 @@
+/* Estilos para el botón de Google */
+.login-background {
+    background-color: rgb(93, 144, 255) !important; /* Asegura prioridad */
+    background-image: url('imgs/typing.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #444;
+    color: white;
+    transform: scale(1.05);
+}
+
+.contenedor_form {
+    background-color: white;
+    padding: 60px;
+    border: solid 1px #0000009e;
+    border-radius: 20px;
+}
+
+.google_button {
+    background-color: #f4eb42; /* Color de fondo de Google */
+    color: black; /* Texto negro */
+    border: none;
+    border-radius: 30px; /* Bordes redondeados */
+    padding: 12px 24px; /* Espaciado dentro del botón */
+    font-size: 18px; /* Tamaño de texto */
+    width: 100%; /* Para que ocupe todo el ancho disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+}
+
+.google_button img {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene las proporciones del logo */
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+/* Efecto de hover */
+.google_button:hover {
+    background-color: #fdf335d6; /* Color más oscuro de Google en hover */
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+.google_button:focus {
+    outline: none; /* Elimina el borde de enfoque */
+}
