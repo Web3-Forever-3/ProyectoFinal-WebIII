@@ -1,0 +1,66 @@
+.logout_background {
+  background-image: url("imgs/logout.jpg") !important; /* Imagen de fondo */
+  background-size: cover !important; /* Asegura que la imagen cubra todo el fondo */
+  background-position: center !important; /* Centra la imagen en la pantalla */
+  background-repeat: no-repeat !important; /* Evita que la imagen se repita */
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  height: 100%; /* Asegura que ocupe toda la altura */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  display: flex; /* Flexbox para centrar el contenido */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+.logout-container {
+  text-align: center;
+  margin-top: 100px;
+  font-family: "Arial", sans-serif;
+  width: 500px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logout-container h1 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  background-color: #ffffff !important; /* Azul moderno */
+  color: rgb(0, 0, 0) !important;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+.logout-button:hover {
+  background-color: #d5d5d5 !important; /* Azul más oscuro */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+.logout-button:active {
+  transform: scale(0.95); /* Efecto de clic */
+}
+
+.logout-container h1,
+.logout-button {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,6 +1,6 @@
 /* Estilos para el fondo de la página de registro */
 .register_background {
-  background-image: url("imgs/fondito\ blanco.jpg") !important; /* Imagen de fondo */
+  background-image: url("imgs/another.jpg") !important; /* Imagen de fondo */
   background-size: cover !important; /* Asegura que la imagen cubra todo el fondo */
   background-position: center !important; /* Centra la imagen en la pantalla */
   background-repeat: no-repeat !important; /* Evita que la imagen se repita */
@@ -41,8 +41,8 @@
 
 /* Estilo para los botones de registro */
 button {
-  background-color: black; /* Fondo negro */
-  color: white; /* Texto blanco */
+  background-color: black !important; /* Fondo negro */
+  color: white !important; /* Texto blanco */
   border: none; /* Sin bordes */
   border-radius: 10px; /* Bordes redondeados */
   padding: 15px 30px; /* Espaciado interno */

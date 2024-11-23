@@ -2,3 +2,11 @@ npm install
 npm install react-router-dom
 npm install react-bootstrap bootstrap
 npm install firebase
+npm install bootstrap
+
+
+sin ejecutar aun:
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
+
+

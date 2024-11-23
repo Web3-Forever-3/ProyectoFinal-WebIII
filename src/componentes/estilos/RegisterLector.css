@@ -1,5 +1,5 @@
 /* Estilo general para el fondo */
-.investigador_background {
+.lector_background {
   background-image: url("imgs/login_background.jpg") !important; /* Fondo claro */
   background-size: cover !important;
   background-position: center !important;
@@ -45,8 +45,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea,
-input[type="file"],
-select {
+input[type="file"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -120,33 +119,4 @@ input[type="file"] {
 
 input[type="file"]:hover {
   border-color: #888;
-}
-/* Estilo para el botón de Google */
-.google_button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffe30e !important; /* Color de Google */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-size: 1rem;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.google_button:hover {
-  background-color: #fff39a !important;
-}
-
-.google_button:active {
-  transform: scale(0.98);
-}
-
-/* Logo de Google en el botón */
-.google-logo {
-  width: 20px;
-  margin-right: 10px;
 }

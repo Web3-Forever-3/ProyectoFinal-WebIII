@@ -1,5 +1,5 @@
 /* Estilo general para el fondo */
-.investigador_background {
+.datos_faltantes_background {
   background-image: url("imgs/login_background.jpg") !important; /* Fondo claro */
   background-size: cover !important;
   background-position: center !important;
@@ -74,45 +74,30 @@ input[type="file"]:focus {
   outline: none;
 }
 
-/* Estilo del botón de envío */
-.submit_button {
-  background-color: #007bff; /* Azul claro */
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Estilo del botón de guardar */
+.boton_subir {
+  background-color: #28a745 !important; /* Verde para el botón de guardar */
+  color: white !important;
+  padding: 12px 20px !important;
+  border: none !important;
+  border-radius: 5px !important;
+  font-size: 1.1rem !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
 }
 
-.submit_button:hover {
-  background-color: #0056b3;
+.boton_subir:hover {
+  background-color: #218838 !important; /* Cambiar a un tono más oscuro cuando se pasa el ratón */
 }
 
-.submit_button:active {
-  transform: scale(0.98);
+.boton_subir:active {
+  transform: scale(
+    1.05
+  ) !important; /* Efecto de contracción cuando se hace clic */
 }
 
-/* Efectos de hover y focus */
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="password"]:hover,
-textarea:hover,
-input[type="file"]:hover {
-  border-color: #007bff;
-}
-
-/* Estilo para los mensajes de error o advertencia */
-.error {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-/* Estilo para el icono o logo si lo llegas a usar */
+/* Estilos para el icono o logo si lo llegas a usar */
 input[type="file"] {
   background-color: #f9f9f9;
   border: 2px solid #ddd;
@@ -121,32 +106,11 @@ input[type="file"] {
 input[type="file"]:hover {
   border-color: #888;
 }
-/* Estilo para el botón de Google */
-.google_button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffe30e !important; /* Color de Google */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-size: 1rem;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.google_button:hover {
-  background-color: #fff39a !important;
-}
-
-.google_button:active {
-  transform: scale(0.98);
-}
-
-/* Logo de Google en el botón */
-.google-logo {
-  width: 20px;
-  margin-right: 10px;
+/* Estilo para los mensajes de error o advertencia */
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
