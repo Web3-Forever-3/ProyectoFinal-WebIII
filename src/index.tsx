@@ -13,6 +13,9 @@ import RegisterLector from "./componentes/sesion/RegisterLector";
 import Logout from "./componentes/sesion/Logout";
 import DatosFaltantes from "./componentes/sesion/DatosFaltantes";
 import DatosFaltantesLector from "./componentes/sesion/DatosFaltantesLector";
+import Categorias from "./componentes/generales/Categorias";
+import AddInvestigacion from "./componentes/generales/AddInvestigacion";
+import MostrarInvestigaciones from "./componentes/generales/MostrarInvestigaciones";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,7 +25,7 @@ root.render(
     <Navbar></Navbar>
 
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<MostrarInvestigaciones />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/RegisterInvestigador" element={<RegisterInvestigador />} />
@@ -30,6 +33,12 @@ root.render(
       <Route path="/Logout" element={<Logout />} />
       <Route path="/DatosFaltantes" element={<DatosFaltantes />} />
       <Route path="/DatosFaltantesLector" element={<DatosFaltantesLector />} />
+      <Route path="/Categorias" element={<Categorias />} />
+      <Route path="/AddInvestigacion" element={<AddInvestigacion />} />
+      {/* <Route
+        path="/MostrarInvestigaciones"
+        element={<MostrarInvestigaciones />}
+      /> */}
     </Routes>
   </BrowserRouter>
 

@@ -1,0 +1,144 @@
+/* Contenedor principal */
+.categorias-container {
+  background-image: url("imgs/pierre-chatel-innocenti-pxoZSTdAzeU-unsplash.jpg") !important;
+  background-size: cover !important; /* Asegura que la imagen cubra todo el fondo */
+  background-position: center !important; /* Centra la imagen */
+  background-repeat: no-repeat !important; /* Evita que la imagen se repita */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff !important; /* Cambia el color de texto predeterminado a blanco para mayor contraste */
+}
+
+/* Título principal */
+.categorias-title {
+  font-size: 2rem;
+  color: #ffffff; /* Asegura que el texto del título sea visible */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Añade sombra para destacar el texto */
+  text-align: center;
+}
+
+/* Formulario */
+.categorias-form {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Fondo blanco con transparencia */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ajusta la sombra para más contraste */
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+/* Etiquetas */
+.categorias-label {
+  font-size: 1rem;
+  color: #333; /* Contrasta mejor con el fondo blanco translúcido */
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Entradas */
+.categorias-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.categorias-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Botón */
+.categorias-button {
+  background-color: #007bff !important;
+  color: white !important;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 95%;
+  transition: background-color 0.3s ease;
+}
+
+.categorias-button:hover {
+  background-color: #0056b3 !important;
+}
+
+.categorias-button:active {
+  transform: scale(0.98);
+}
+
+/* Lista de categorías */
+.categorias-list-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.categorias-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categorias-list-item {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Fondo blanco con transparencia */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.categorias-list-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.categorias-list-item-name,
+.categorias-list-item-desc {
+  font-size: 1rem;
+  color: #333;
+  flex: 1;
+  text-align: center;
+  width: 400px;
+}
+
+.categorias-list-item-name {
+  font-weight: bold;
+}
+
+/* Mensaje cuando no hay categorías */
+.categorias-empty {
+  font-size: 1rem;
+  color: #ffffff !important;
+  text-align: center;
+  margin-top: 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}

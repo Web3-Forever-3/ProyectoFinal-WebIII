@@ -1,0 +1,139 @@
+/* Estilo general para el fondo de la página */
+.background {
+  background-image: url("imgs/epa.jpg") !important; /* Fondo claro */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 20px !important;
+}
+
+/* Estilo para el título de las investigaciones */
+.background h1 {
+  font-size: 60px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra fuerte */
+  text-align: center;
+}
+
+/* Estilo para el filtro de categorías (ComboBox) */
+.form-label {
+  font-size: 1.2rem; /* Aumenta el tamaño de la fuente */
+  color: #333333; /* Color más oscuro para mejor contraste */
+  font-weight: 600; /* Hacer que el texto sea un poco más negrito */
+  margin-bottom: 12px; /* Espacio más grande debajo */
+  display: block;
+  text-align: center; /* Centrar el texto */
+  padding: 6px; /* Añadir algo de espacio alrededor */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #f0f0f0; /* Fondo suave para resaltar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
+  transition: background-color 0.3s, transform 0.3s; /* Efecto suave de cambio de fondo y escala */
+}
+
+/* Efecto cuando el label es tocado o se pasa el ratón sobre él */
+.form-label:hover {
+  background-color: #e0e0e0; /* Cambio de color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Agrandar ligeramente el label */
+}
+
+.select-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo para las tarjetas de investigación */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+.card-text strong {
+  color: #333;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.card .carousel-inner img {
+  border-radius: 10px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el contenedor de las investigaciones */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col-md-4 {
+  margin-bottom: 20px;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 250px;
+}
+
+/* Estilo de texto cuando no hay investigaciones */
+.text-center {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Ajuste del padding en la página */
+.background {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* Estilo para las tarjetas en pantallas pequeñas */
+@media (max-width: 768px) {
+  .col-md-4 {
+    width: 100% !important;
+  }
+}

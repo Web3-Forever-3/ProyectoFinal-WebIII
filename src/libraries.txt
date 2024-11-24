@@ -3,10 +3,15 @@ npm install react-router-dom
 npm install react-bootstrap bootstrap
 npm install firebase
 npm install bootstrap
+npm install react-modal
+npm install --save-dev @types/bootstrap
+
 
 
 sin ejecutar aun:
 npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
+
 
 
 

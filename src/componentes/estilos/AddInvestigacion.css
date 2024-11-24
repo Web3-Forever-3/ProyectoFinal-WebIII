@@ -1,0 +1,124 @@
+/* Estilo general para el fondo */
+.add-investigacion-container {
+  background-image: url("imgs/bgggg.jpg") !important; /* Fondo claro */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+}
+
+/* Estilo para el título */
+h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra fuerte */
+}
+
+/* Estilos del formulario */
+form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+/* Estilos para las etiquetas de los campos */
+label {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Estilos de los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+input[type="file"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Ajustes para el área de texto */
+textarea {
+  resize: vertical; /* Permite que el usuario ajuste la altura */
+}
+
+/* Estilos de los archivos */
+input[type="file"] {
+  border: none;
+  background-color: #fafafa;
+}
+
+/* Efecto de enfoque */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+input[type="file"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo del botón de envío */
+button[type="submit"] {
+  background-color: #007bff !important; /* Azul claro */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Estilo para los mensajes de error o advertencia */
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Estilo para el input de archivos */
+input[type="file"] {
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+}
+
+input[type="file"]:hover {
+  border-color: #888;
+}
+
+/* Estilos del loader */
+button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

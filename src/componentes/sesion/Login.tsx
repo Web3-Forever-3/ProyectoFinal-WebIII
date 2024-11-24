@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "../estilos/Login.css";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, googleSignIn } from "../../firebase/firebaseInit"; // Asegúrate de tener la función de googleSignIn definida en firebaseInit
+import { auth, googleSignIn } from "../../firebase/firebaseInit";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebaseInit"; // Firestore
 import googleLogo from "../estilos/imgs/googleLogo.png";
 
 const Login = () => {
@@ -28,13 +30,46 @@ const Login = () => {
     }
   };
 
+  // Función para verificar y registrar al usuario en Firestore
+  const handleUserCheck = async (user: any) => {
+    const userDocRef = doc(db, "usuarios", user.uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (!userSnapshot.exists()) {
+      // Si el usuario no existe, guardarlo como lector por defecto
+      const newUser = {
+        nombre: user.displayName || "",
+        email: user.email || "",
+        fotoURL: user.photoURL || "",
+        role: "lector",
+      };
+
+      await setDoc(userDocRef, newUser);
+
+      // Redirigir a completar datos
+      navigate("/DatosFaltantesLector", {
+        state: {
+          uid: user.uid,
+          nombre: newUser.nombre,
+          email: newUser.email,
+          fotoURL: newUser.fotoURL,
+        },
+      });
+    } else {
+      // Si ya existe, redirigir al home o a su página correspondiente
+      alert("Inicio de sesión exitoso con Google");
+      navigate("/");
+    }
+  };
+
   // Función para manejar el inicio de sesión con Google
   const handleGoogleSignIn = async () => {
     try {
       const userCredential = await googleSignIn();
-      // Guardar datos del usuario en Firestore si es la primera vez
-      alert("Inicio de sesión exitoso con Google");
-      navigate("/"); // Redirige a home después de iniciar sesión
+      const user = userCredential.user;
+
+      // Verificar y registrar al usuario en Firestore
+      await handleUserCheck(user);
     } catch (error) {
       console.error("Error en el inicio con Google:", error);
       alert("Hubo un problema al iniciar sesión con Google.");
