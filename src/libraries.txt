@@ -11,6 +11,11 @@ npm install --save-dev @types/bootstrap
 sin ejecutar aun:
 npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
+intento fallido de los PDF xd
+
+npm uninstall react-pdf pdfjs-dist
+npm install react-pdf@9.1.1 pdfjs-dist@2.10.377
+
 
 
 

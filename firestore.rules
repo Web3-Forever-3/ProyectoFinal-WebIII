@@ -5,7 +5,7 @@ service cloud.firestore {
 
     // Permitir la lectura de documentos de categorias a cualquier usuario autenticado
     match /categorias/{categoria} {
-      allow read: if request.auth != null; // Permitir lectura solo si el usuario está autenticado
+      allow read: if true; // Permitir lectura solo si el usuario está autenticado
       allow create: if request.auth != null; // Permitir agregar categoría solo si el usuario está autenticado
       allow update, delete: if false; // No permitir actualización ni eliminación de categorías
     }
@@ -13,7 +13,7 @@ service cloud.firestore {
     // Regla para la colección de investigaciones
     match /investigaciones/{investigacionId} {
       // Permitir lectura de las investigaciones a cualquier usuario autenticado
-      allow read: if request.auth != null;
+      allow read: if true;
       
       // Permitir creación de investigaciones solo a usuarios autenticados
       allow create: if request.auth != null;
@@ -27,7 +27,7 @@ service cloud.firestore {
 
     // Regla global para otros documentos si es necesario (mantenerla según tu estructura)
     match /{document=**} {
-      allow read, write: if request.auth != null; // Desactivar el acceso global por defecto
+      allow read, write: if true; // Desactivar el acceso global por defecto
     }
   }
 }

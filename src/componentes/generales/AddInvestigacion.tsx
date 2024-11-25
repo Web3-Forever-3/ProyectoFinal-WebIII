@@ -22,13 +22,14 @@ const AddInvestigacion = () => {
   const [categorias, setCategorias] = useState<any[]>([]);
   const [imagenes, setImagenes] = useState<File[]>([]);
   const [pdf, setPdf] = useState<File | null>(null);
+  const [conclusion, setConclusion] = useState(""); // Nuevo estado para la conclusión
+  const [recomendaciones, setRecomendaciones] = useState(""); // Nuevo estado para las recomendaciones
   const [loading, setLoading] = useState(false);
   const [usuario, setUsuario] = useState<any | null>(null);
   const [rol, setRol] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
-    // Verificar si el usuario está autenticado
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setAuthLoading(true);
 
@@ -51,7 +52,7 @@ const AddInvestigacion = () => {
               );
               navigate("/Login");
             } else if (datosUsuario.role === "investigador") {
-              await cargarCategorias(); // Cargar categorías si es investigador
+              await cargarCategorias();
             }
           } else {
             alert("Usuario no encontrado en la base de datos.");
@@ -90,6 +91,11 @@ const AddInvestigacion = () => {
   const enviarForm = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!categoria) {
+      alert("Debes seleccionar una categoría.");
+      return;
+    }
+
     if (imagenes.length < 4 || imagenes.length > 6) {
       alert("Debes cargar entre 4 y 6 imágenes.");
       return;
@@ -112,6 +118,8 @@ const AddInvestigacion = () => {
         titulo,
         categoria,
         descripcion,
+        conclusion, // Incluir la conclusión
+        recomendaciones, // Incluir las recomendaciones
         idUsuario: usuario.uid,
         fechaCreacion: new Date(),
       };
@@ -131,7 +139,7 @@ const AddInvestigacion = () => {
       });
 
       alert("Investigación añadida exitosamente.");
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       console.error("Error al subir la investigación:", error);
       alert("Hubo un problema al añadir la investigación.");
@@ -196,6 +204,22 @@ const AddInvestigacion = () => {
           id="descripcion"
           value={descripcion}
           onChange={(e) => setDescripcion(e.target.value)}
+          required
+        />
+
+        <label htmlFor="conclusion">Conclusión:</label>
+        <textarea
+          id="conclusion"
+          value={conclusion}
+          onChange={(e) => setConclusion(e.target.value)}
+          required
+        />
+
+        <label htmlFor="recomendaciones">Recomendaciones Finales:</label>
+        <textarea
+          id="recomendaciones"
+          value={recomendaciones}
+          onChange={(e) => setRecomendaciones(e.target.value)}
           required
         />
 

@@ -80,11 +80,11 @@ const Login = () => {
     <div className="login-background">
       <div className="container" style={{ maxWidth: "600px" }}>
         <div className="contenedor_form">
-          <h2 className="text-center mb-4">Iniciar Sesión</h2>
+          <h2 className="h2-custom">Iniciar Sesión</h2>
 
           <form onSubmit={handleEmailPasswordLogin}>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label-custom">
                 Correo Electrónico
               </label>
               <input
@@ -98,7 +98,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">
+              <label htmlFor="password" className="form-label-custom">
                 Contraseña
               </label>
               <input
@@ -111,20 +111,20 @@ const Login = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn w-100">
+            <button type="submit" className="btn-custom">
               Iniciar Sesión
             </button>
           </form>
 
           <div className="text-center mt-3">
-            <p style={{ fontWeight: "bold" }}>O inicia sesión con Google</p>
+            <p style={{ fontWeight: "bold", color: "black" }}>
+              O inicia sesión con Google
+            </p>
             <button className="google_button" onClick={handleGoogleSignIn}>
               <img src={googleLogo} alt="Google Logo" className="google-logo" />
             </button>
           </div>
         </div>
-        <br />
-        <br />
       </div>
     </div>
   );

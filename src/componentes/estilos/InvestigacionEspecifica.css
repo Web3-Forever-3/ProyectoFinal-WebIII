@@ -1,0 +1,233 @@
+/* Fondo para toda la sección de investigación */
+.background_imagen {
+  background-image: url("imgs/lucecitasxd.jpg") !important; /* Ruta a la imagen de fondo */
+  background-size: cover !important; /* Cubre todo el área del contenedor */
+  background-position: center center !important; /* Centra la imagen */
+  background-repeat: no-repeat !important; /* Evita la repetición de la imagen */
+  padding: 40px 0 !important; /* Ajuste de relleno para dar espacio arriba y abajo */
+}
+
+/* Estilos generales para el contenedor de la investigación */
+.investigacion-especifica-container {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ) !important; /* Fondo blanco semitransparente */
+  padding: 40px !important;
+  border-radius: 20px !important;
+  border: solid 1px #0000009e !important;
+  max-width: 800px !important;
+  margin: 50px auto !important; /* Agregado margen superior e inferior */
+  position: relative !important; /* Para que el contenedor esté por encima del fondo */
+  overflow: hidden !important; /* Asegura que el fondo no se desborde */
+}
+
+/* Estilo para el título */
+.investigacion-especifica-titulo {
+  text-align: center !important;
+  font-size: 2rem !important;
+  font-weight: bold !important;
+  margin-bottom: 20px !important;
+  color: #000000 !important;
+}
+
+/* Información del propietario */
+.investigacion-especifica-info-container {
+  margin-bottom: 30px !important;
+  word-wrap: break-word !important; /* Evita que el texto se desborde */
+  overflow-wrap: break-word !important; /* Asegura que los textos largos se ajusten */
+  white-space: normal !important; /* Permite que el texto se ajuste automáticamente */
+}
+
+.investigacion-especifica-info-container h4 {
+  font-size: 1.5rem !important;
+  margin-bottom: 10px !important;
+}
+
+.investigacion-especifica-info-container p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  word-wrap: break-word !important; /* Asegura que el texto largo se ajuste */
+  overflow-wrap: break-word !important; /* Evita que se salga del contenedor */
+  white-space: normal !important; /* Permite que el texto se ajuste automáticamente */
+}
+
+/* Estilo para el contenedor del propietario (agregar max-width y auto margin para centrar) */
+.investigacion-especifica-info-container {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important; /* Asegura un pequeño relleno a los lados */
+  box-sizing: border-box !important; /* Asegura que el padding no cause desbordamiento */
+}
+
+/* Estilos para la categoría */
+.investigacion-especifica-categoria-info {
+  margin-top: 20px !important;
+}
+
+.investigacion-especifica-categoria-info h4 {
+  font-size: 1.25rem !important;
+}
+
+.investigacion-especifica-categoria-info p {
+  font-size: 1.1rem !important;
+}
+
+/* Estilos para el carrusel de imágenes */
+.investigacion-especifica-imagenes-container {
+  margin-top: 40px !important;
+}
+
+.investigacion-especifica-imagenes-container h4 {
+  font-size: 1.5rem !important;
+  margin-bottom: 20px !important;
+}
+
+.investigacion-especifica-imagen-item img {
+  width: 100% !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos para el contenedor del PDF */
+.investigacion-especifica-pdf-container {
+  margin-top: 20px !important;
+  text-align: center !important;
+}
+
+.investigacion-especifica-pdf-container .btn {
+  background-color: rgb(2, 5, 14) !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  width: 400px;
+}
+
+.investigacion-especifica-pdf-container .btn:hover {
+  background-color: #06054b !important;
+  transform: scale(1.05) !important;
+}
+
+/* Estilos para las recomendaciones y conclusiones */
+.investigacion-especifica-recomendaciones-container,
+.investigacion-especifica-conclusiones-container,
+.investigacion-especifica-descripcion-info {
+  margin-top: 30px !important;
+  word-wrap: break-word !important; /* Evita que el texto se desborde */
+  overflow-wrap: break-word !important; /* Asegura que los textos largos se ajusten */
+  white-space: normal !important; /* Permite que el texto se ajuste automáticamente */
+}
+
+.investigacion-especifica-recomendaciones-container h4,
+.investigacion-especifica-conclusiones-container h4,
+.investigacion-especifica-descripcion-info h4 {
+  font-size: 1.25rem !important;
+  margin-bottom: 10px !important;
+}
+
+.investigacion-especifica-recomendaciones-container p,
+.investigacion-especifica-conclusiones-container p,
+.investigacion-especifica-descripcion-info p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: #555 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+}
+
+/* Media Queries para dispositivos móviles */
+
+/* Pantallas pequeñas (teléfonos en orientación vertical) */
+@media (max-width: 480px) {
+  .investigacion-especifica-container {
+    padding: 20px !important; /* Reducir el relleno para adaptarse a pantallas pequeñas */
+    margin: 20px auto !important;
+  }
+
+  .investigacion-especifica-titulo {
+    font-size: 1.5rem !important; /* Reducir el tamaño del título */
+  }
+
+  .investigacion-especifica-info-container h4 {
+    font-size: 1.3rem !important; /* Reducir el tamaño de los encabezados */
+  }
+
+  .investigacion-especifica-info-container p {
+    font-size: 0.9rem !important; /* Reducir el tamaño del texto */
+  }
+
+  .investigacion-especifica-pdf-container .btn {
+    width: 100% !important; /* Hacer el botón de PDF más estrecho en dispositivos pequeños */
+  }
+
+  .investigacion-especifica-recomendaciones-container h4,
+  .investigacion-especifica-conclusiones-container h4 {
+    font-size: 1.1rem !important; /* Reducir tamaño de encabezados */
+  }
+
+  .investigacion-especifica-recomendaciones-container p,
+  .investigacion-especifica-conclusiones-container p {
+    font-size: 0.9rem !important; /* Reducir tamaño del texto */
+  }
+}
+
+/* Pantallas medianas (tabletas y teléfonos en orientación horizontal) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .investigacion-especifica-container {
+    padding: 30px !important;
+    margin: 30px auto !important;
+  }
+
+  .investigacion-especifica-titulo {
+    font-size: 1.8rem !important; /* Ajuste de tamaño de título */
+  }
+
+  .investigacion-especifica-info-container h4 {
+    font-size: 1.4rem !important;
+  }
+
+  .investigacion-especifica-info-container p {
+    font-size: 1rem !important;
+  }
+
+  .investigacion-especifica-pdf-container .btn {
+    width: 100% !important;
+  }
+
+  .investigacion-especifica-recomendaciones-container h4,
+  .investigacion-especifica-conclusiones-container h4 {
+    font-size: 1.2rem !important;
+  }
+
+  .investigacion-especifica-recomendaciones-container p,
+  .investigacion-especifica-conclusiones-container p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Pantallas grandes (pantallas de escritorio) */
+@media (min-width: 769px) {
+  .investigacion-especifica-container {
+    padding: 40px !important;
+    margin: 50px auto !important;
+  }
+
+  .investigacion-especifica-titulo {
+    font-size: 2rem !important;
+  }
+
+  .investigacion-especifica-info-container h4 {
+    font-size: 1.5rem !important;
+  }
+
+  .investigacion-especifica-info-container p {
+    font-size: 1rem !important;
+  }
+
+  .investigacion-especifica-pdf-container .btn {
+    width: 400px;
+  }
+}

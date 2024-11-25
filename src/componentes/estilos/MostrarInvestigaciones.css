@@ -14,126 +14,199 @@
 
 /* Estilo para el título de las investigaciones */
 .background h1 {
-  font-size: 60px;
-  color: #ffffff;
-  margin-bottom: 30px;
-  font-weight: bold;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra fuerte */
-  text-align: center;
+  font-size: 60px !important;
+  color: #ffffff !important;
+  margin-bottom: 30px !important;
+  font-weight: bold !important;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6) !important; /* Sombra fuerte */
+  text-align: center !important;
 }
 
 /* Estilo para el filtro de categorías (ComboBox) */
 .form-label {
-  font-size: 1.2rem; /* Aumenta el tamaño de la fuente */
-  color: #333333; /* Color más oscuro para mejor contraste */
-  font-weight: 600; /* Hacer que el texto sea un poco más negrito */
-  margin-bottom: 12px; /* Espacio más grande debajo */
-  display: block;
-  text-align: center; /* Centrar el texto */
-  padding: 6px; /* Añadir algo de espacio alrededor */
-  border-radius: 5px; /* Bordes redondeados */
-  background-color: #f0f0f0; /* Fondo suave para resaltar */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
-  transition: background-color 0.3s, transform 0.3s; /* Efecto suave de cambio de fondo y escala */
+  font-size: 1.2rem !important; /* Aumenta el tamaño de la fuente */
+  color: #333333 !important; /* Color más oscuro para mejor contraste */
+  font-weight: 600 !important; /* Hacer que el texto sea un poco más negrito */
+  margin-bottom: 12px !important; /* Espacio más grande debajo */
+  display: block !important;
+  text-align: center !important; /* Centrar el texto */
+  padding: 6px !important; /* Añadir algo de espacio alrededor */
+  border-radius: 5px !important; /* Bordes redondeados */
+  background-color: #f0f0f0 !important; /* Fondo suave para resaltar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera para dar profundidad */
+  transition: background-color 0.3s, transform 0.3s !important; /* Efecto suave de cambio de fondo y escala */
 }
 
 /* Efecto cuando el label es tocado o se pasa el ratón sobre él */
 .form-label:hover {
-  background-color: #e0e0e0; /* Cambio de color de fondo al pasar el ratón */
-  transform: scale(1.05); /* Agrandar ligeramente el label */
+  background-color: #e0e0e0 !important; /* Cambio de color de fondo al pasar el ratón */
+  transform: scale(1.05) !important; /* Agrandar ligeramente el label */
 }
 
 .select-container {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 30px;
-  text-align: center;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin-bottom: 30px !important;
+  text-align: center !important;
 }
 
 select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  width: 100% !important;
+  padding: 12px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+  font-size: 1rem !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.3s ease !important;
 }
 
 select:focus {
-  border-color: #007bff;
-  outline: none;
+  border-color: #007bff !important;
+  outline: none !important;
 }
 
 /* Estilo para las tarjetas de investigación */
 .card {
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1) !important;
 }
 
 .card-body {
-  padding: 15px;
+  padding: 15px !important;
 }
 
 .card-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.25rem !important;
+  font-weight: bold !important;
+  color: #333 !important;
 }
 
 .card-text {
-  font-size: 1rem;
-  color: #666;
+  font-size: 1rem !important;
+  color: #666 !important;
 }
 
 .card-text strong {
-  color: #333;
+  color: #333 !important;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer !important;
 }
 
 .card .carousel-inner img {
-  border-radius: 10px;
-  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+  border-radius: 10px !important;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Estilo para el contenedor de las investigaciones */
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
 }
 
 .col-md-4 {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .carousel-item img {
-  object-fit: cover;
-  height: 250px;
+  object-fit: cover !important;
+  height: 250px !important;
 }
 
 /* Estilo de texto cuando no hay investigaciones */
 .text-center {
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+  color: #ffffff !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Ajuste del padding en la página */
 .background {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
 }
 
 /* Estilo para las tarjetas en pantallas pequeñas */
 @media (max-width: 768px) {
   .col-md-4 {
     width: 100% !important;
+  }
+
+  .background h1 {
+    font-size: 40px !important; /* Reducir tamaño del título en pantallas pequeñas */
+    margin-bottom: 20px !important; /* Menos espacio abajo */
+  }
+
+  .form-label {
+    font-size: 1rem !important; /* Reducir tamaño del texto del combo */
+    margin-bottom: 10px !important; /* Menos espacio debajo */
+  }
+
+  .select-container {
+    max-width: 90% !important; /* Hacer más pequeño el contenedor del select */
+  }
+
+  .card-body {
+    padding: 10px !important; /* Reducir el relleno dentro de las tarjetas */
+  }
+
+  .card-title {
+    font-size: 1rem !important; /* Reducir el tamaño del título de las tarjetas */
+  }
+
+  .card-text {
+    font-size: 0.9rem !important; /* Reducir el tamaño del texto */
+  }
+
+  .btn-agregar {
+    width: 100% !important; /* Hacer que el botón ocupe todo el ancho */
+    font-size: 1rem !important; /* Ajustar tamaño del texto */
+    padding: 10px !important; /* Reducir el padding */
+    margin-top: 20px !important; /* Menos espacio arriba */
+  }
+}
+
+/* Estilo para el botón */
+.btn-agregar {
+  background-color: #007bff !important; /* Color de fondo azul */
+  color: white !important; /* Texto blanco */
+  font-size: 1.1rem !important; /* Tamaño de la fuente */
+  font-weight: bold !important; /* Fuente en negrita */
+  padding: 12px 20px !important; /* Relleno para el botón */
+  border: none !important; /* Sin borde */
+  border-radius: 5px !important; /* Bordes redondeados */
+  cursor: pointer !important; /* Cambia el cursor al pasar el mouse */
+  transition: background-color 0.3s, transform 0.3s !important; /* Efecto suave de transición */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Sombra suave */
+  margin-top: 30px !important; /* Espacio superior */
+  display: block !important; /* Hace que el botón ocupe toda la línea */
+  width: 400px !important; /* Ancho fijo del botón */
+  margin-left: auto !important; /* Centra el botón */
+  margin-right: auto !important; /* Centra el botón */
+}
+
+/* Efecto cuando el botón es tocado o se pasa el ratón sobre él */
+.btn-agregar:hover {
+  background-color: #0056b3 !important; /* Cambio de color a un azul más oscuro */
+  transform: scale(
+    1.05
+  ) !important; /* Aumenta ligeramente el tamaño del botón */
+}
+
+/* Efecto cuando el botón está deshabilitado */
+.btn-agregar:disabled {
+  background-color: #cccccc !important; /* Color de fondo gris */
+  cursor: not-allowed !important; /* Cambia el cursor para indicar que está deshabilitado */
+}
+
+/* Estilo para el botón en pantallas pequeñas */
+@media (max-width: 768px) {
+  .btn-agregar {
+    width: 100% !important; /* Hace que el botón ocupe todo el ancho en pantallas pequeñas */
   }
 }

@@ -16,6 +16,7 @@ import DatosFaltantesLector from "./componentes/sesion/DatosFaltantesLector";
 import Categorias from "./componentes/generales/Categorias";
 import AddInvestigacion from "./componentes/generales/AddInvestigacion";
 import MostrarInvestigaciones from "./componentes/generales/MostrarInvestigaciones";
+import InvestigacionEspecifica from "./componentes/generales/InvestigacionEspecifica";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -35,6 +36,10 @@ root.render(
       <Route path="/DatosFaltantesLector" element={<DatosFaltantesLector />} />
       <Route path="/Categorias" element={<Categorias />} />
       <Route path="/AddInvestigacion" element={<AddInvestigacion />} />
+      <Route
+        path="/InvestigacionEspecifica/:id"
+        element={<InvestigacionEspecifica />}
+      />
       {/* <Route
         path="/MostrarInvestigaciones"
         element={<MostrarInvestigaciones />}

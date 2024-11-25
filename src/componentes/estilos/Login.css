@@ -1,4 +1,12 @@
-/* Estilos para el botón de Google */
+/* Clase personalizada para las etiquetas del formulario */
+.form-label-custom {
+  font-weight: bold; /* Resalta las etiquetas */
+  color: #000000; /* Color del texto de las etiquetas */
+  font-size: 1rem; /* Tamaño de fuente */
+  margin-bottom: 0.5rem; /* Espacio debajo de las etiquetas */
+}
+
+/* Estilos para el fondo del login */
 .login-background {
   background-color: rgb(255, 255, 255) !important; /* Asegura prioridad */
   background-image: url("imgs/typing.jpg") !important;
@@ -11,17 +19,7 @@
   padding-top: 40px;
 }
 
-.btn {
-  background-color: black;
-  color: white;
-}
-
-.btn:hover {
-  background-color: #444;
-  color: white;
-  transform: scale(1.05);
-}
-
+/* Estilos para el formulario */
 .contenedor_form {
   background-color: white;
   padding: 60px;
@@ -29,6 +27,68 @@
   border-radius: 20px;
 }
 
+/* Estilos para el botón principal */
+.btn-custom {
+  background-color: black;
+  color: white;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+}
+
+.btn-custom:hover {
+  background-color: #444;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Estilos para el botón de Google */
+.google_button {
+  background-color: #f4eb42; /* Color de fondo de Google */
+  color: black; /* Texto negro */
+  border: none;
+  border-radius: 30px; /* Bordes redondeados */
+  padding: 12px 24px; /* Espaciado dentro del botón */
+  font-size: 18px; /* Tamaño de texto */
+  width: 100%; /* Para que ocupe todo el ancho disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+}
+/* Estilos para el fondo del login */
+.login-background {
+  background-color: rgb(255, 255, 255) !important; /* Asegura prioridad */
+  background-image: url("imgs/typing.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding-top: 40px;
+}
+
+/* Estilos específicos para el formulario */
+.contenedor_form {
+  background-color: white;
+  padding: 60px;
+  border: solid 1px #0000009e;
+  border-radius: 20px;
+}
+
+/* Estilos para el botón principal */
+.btn-custom {
+  background-color: black;
+  color: white;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+}
+
+.btn-custom:hover {
+  background-color: #444;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Estilos específicos para el botón de Google */
 .google_button {
   background-color: #f4eb42; /* Color de fondo de Google */
   color: black; /* Texto negro */
@@ -43,13 +103,14 @@
   transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
 }
 
+/* Ajustes en el logo de Google dentro del botón */
 .google_button img {
   width: 100px; /* Ajusta el tamaño del logo */
   height: auto; /* Mantiene las proporciones del logo */
   margin-right: 10px; /* Espacio entre el logo y el texto */
 }
 
-/* Efecto de hover */
+/* Efecto de hover en el botón de Google */
 .google_button:hover {
   background-color: #fdf335d6; /* Color más oscuro de Google en hover */
   transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
@@ -57,4 +118,39 @@
 
 .google_button:focus {
   outline: none; /* Elimina el borde de enfoque */
+}
+
+/* Ajustes en los formularios */
+.form-label {
+  font-weight: bold; /* Resalta las etiquetas de los formularios */
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+/* Ajustes en el logo de Google dentro del botón */
+.google_button img {
+  width: 100px; /* Ajusta el tamaño del logo */
+  height: auto; /* Mantiene las proporciones del logo */
+  margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+/* Efecto de hover en el botón de Google */
+.google_button:hover {
+  background-color: #fdf335d6; /* Color más oscuro de Google en hover */
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+.google_button:focus {
+  outline: none; /* Elimina el borde de enfoque */
+}
+
+/* Clase personalizada para los encabezados h2 */
+.h2-custom {
+  text-align: center; /* Asegura que el texto esté centrado */
+  margin-bottom: 1.5rem; /* Espacio en la parte inferior del encabezado */
+  font-weight: bold; /* Resalta el texto */
+  color: #000000; /* Color negro para el texto */
+  font-size: 2rem; /* Ajusta el tamaño de la fuente */
 }

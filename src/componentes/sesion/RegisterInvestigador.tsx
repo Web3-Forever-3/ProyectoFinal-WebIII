@@ -200,7 +200,9 @@ const RegisterInvestigador = () => {
         </button>
 
         <div className="text-center mt-4">
-          <p>O regístrate con</p>
+          <p style={{ color: "black", fontWeight: "normal" }}>
+            O regístrate con
+          </p>
           <button
             type="button"
             className="google_button"

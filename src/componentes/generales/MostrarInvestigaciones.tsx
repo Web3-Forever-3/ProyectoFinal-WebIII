@@ -17,14 +17,17 @@ const MostrarInvestigaciones = () => {
   useEffect(() => {
     const cargarInvestigacionesYCategorias = async () => {
       try {
+        console.log("Cargando categorías...");
         // Cargar las categorías
         const categoriasRef = collection(db, "categorias");
         const categoriasSnapshot = await getDocs(categoriasRef);
         const categoriasData = categoriasSnapshot.docs.map((docSnap) =>
           docSnap.data()
         );
+        console.log("Categorías cargadas:", categoriasData);
         setCategorias(categoriasData);
 
+        console.log("Cargando investigaciones...");
         // Cargar las investigaciones
         const investigacionesRef = collection(db, "investigaciones");
         const querySnapshot = await getDocs(investigacionesRef);
@@ -35,32 +38,52 @@ const MostrarInvestigaciones = () => {
           const investigacion = docSnap.data();
           const idUsuario = investigacion.idUsuario;
 
+          console.log(`Cargando usuario con ID: ${idUsuario}`);
           // Obtener el nombre del usuario
           const usuarioDoc = await getDoc(doc(db, "usuarios", idUsuario));
           const usuarioData = usuarioDoc.exists()
             ? usuarioDoc.data()
             : { nombre: "Desconocido" };
 
+          console.log(`Nombre de usuario: ${usuarioData.nombre}`);
+
           // Obtener las URLs de las imágenes desde Firebase Storage
           const imagenUrls = await cargarImagenes(investigacion.imagenes);
-
-          // Obtener la categoría correspondiente
-          const categoriaDoc = await getDoc(
-            doc(db, "categorias", investigacion.categoria)
+          console.log(
+            `Imágenes cargadas para la investigación ${investigacion.titulo}:`,
+            imagenUrls
           );
-          const categoriaData = categoriaDoc.exists()
-            ? categoriaDoc.data()
-            : { nombre_categoria: "Sin categoría" };
 
-          investigacionesData.push({
-            id: docSnap.id,
-            ...investigacion,
-            nombreUsuario: usuarioData.nombre, // Agregar nombre del usuario
-            imagenes: imagenUrls, // Agregar las URLs de las imágenes
-            categoriaNombre: categoriaData.nombre_categoria, // Agregar nombre de la categoría
-          });
+          // Verificar si la categoría está definida antes de acceder a la referencia
+          if (investigacion.categoria) {
+            // Obtener la categoría correspondiente (acceder a la colección y documento de categorías correctamente)
+            const categoriaDoc = await getDoc(
+              doc(db, "categorias", investigacion.categoria)
+            );
+            const categoriaData = categoriaDoc.exists()
+              ? categoriaDoc.data()
+              : { nombre_categoria: "Sin categoría" };
+
+            investigacionesData.push({
+              id: docSnap.id,
+              ...investigacion,
+              nombreUsuario: usuarioData.nombre, // Agregar nombre del usuario
+              imagenes: imagenUrls, // Agregar las URLs de las imágenes
+              categoriaNombre: categoriaData.nombre_categoria, // Agregar nombre de la categoría
+            });
+          } else {
+            // Si no se encuentra la categoría, asignar un valor por defecto
+            investigacionesData.push({
+              id: docSnap.id,
+              ...investigacion,
+              nombreUsuario: usuarioData.nombre, // Agregar nombre del usuario
+              imagenes: imagenUrls, // Agregar las URLs de las imágenes
+              categoriaNombre: "Sin categoría", // Asignar "Sin categoría" si no hay categoría
+            });
+          }
         }
 
+        console.log("Investigaciones cargadas:", investigacionesData);
         setInvestigaciones(investigacionesData);
       } catch (error) {
         console.error("Error al cargar investigaciones y categorías:", error);
@@ -83,7 +106,7 @@ const MostrarInvestigaciones = () => {
   };
 
   const handleCardClick = (id: string) => {
-    navigate(`/investigacion/${id}`);
+    navigate(`/InvestigacionEspecifica/${id}`);
   };
 
   const handleCategoriaChange = (
@@ -144,7 +167,7 @@ const MostrarInvestigaciones = () => {
                   id={`carousel-${investigacion.id}`}
                   className="carousel slide"
                   data-bs-ride="carousel"
-                  data-bs-interval="1000" // Cambiar cada 3 segundos
+                  data-bs-interval="1" //
                 >
                   <div className="carousel-inner">
                     {investigacion.imagenes.length > 0 && (
@@ -160,7 +183,7 @@ const MostrarInvestigaciones = () => {
                     {investigacion.imagenes
                       .slice(1)
                       .map((imagen: string, index: number) => (
-                        <div className={`carousel-item`} key={index}>
+                        <div className="carousel-item" key={index}>
                           <img
                             src={imagen}
                             className="d-block w-100"
@@ -186,6 +209,15 @@ const MostrarInvestigaciones = () => {
               </div>
             </div>
           ))}
+
+          <div className="text-center mt-4">
+            <button
+              className="btn-agregar" // Usar la clase btn-agregar en lugar de btn btn-primary
+              onClick={() => navigate("/AddInvestigacion")}
+            >
+              Añadir nueva investigación
+            </button>
+          </div>
         </div>
       </div>
     </div>
