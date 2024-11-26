@@ -335,6 +335,7 @@ const InvestigacionEspecifica = () => {
         </div>
 
         <h3>Comentarios:</h3>
+        <br />
         {comentarios.length > 0 ? (
           comentarios.map((comentario, index) => (
             <div key={index} className="comentario">
@@ -358,6 +359,7 @@ const InvestigacionEspecifica = () => {
                   comentario.fecha_comentario.toDate()
                 ).toLocaleDateString()}
               </p>
+              <hr />
             </div>
           ))
         ) : (

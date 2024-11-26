@@ -13,7 +13,7 @@
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2rem !important;
   color: #ffffff;
   margin-bottom: 20px;
   font-weight: bold;
