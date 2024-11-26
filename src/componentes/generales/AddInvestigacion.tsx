@@ -254,6 +254,10 @@ const AddInvestigacion = () => {
           {loading ? "Subiendo..." : "Añadir Investigación"}
         </button>
       </form>
+      <h1>¿Quieres agregar una categoría nueva?</h1>
+      <button onClick={() => navigate("/Categorias")} className="btn_categoria">
+        Agregar Categoría
+      </button>
     </div>
   );
 };

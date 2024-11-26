@@ -3,6 +3,19 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Regla para la colección de comentarios
+    match /comentarios/{comentarioId} {
+      // Permitir lectura de comentarios a cualquier usuario autenticado
+      allow read: if true;
+      
+      // Permitir la creación de comentarios solo si el usuario está autenticado
+      allow create: if request.auth != null;
+
+      // No permitir la actualización ni eliminación de comentarios
+      allow update, delete: if false;
+    }
+
+
     // Permitir la lectura de documentos de categorias a cualquier usuario autenticado
     match /categorias/{categoria} {
       allow read: if true; // Permitir lectura solo si el usuario está autenticado

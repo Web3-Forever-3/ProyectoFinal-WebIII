@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db, storage } from "../../firebase/firebaseInit";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  collection,
+  query,
+  where,
+  onSnapshot,
+  addDoc, // Aquí es donde añades la importación de addDoc
+} from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 import "../estilos/InvestigacionEspecifica.css";
+
+import fullStar from "../estilos/imgs/full star.png";
+import emptyStar from "../estilos/imgs/empty star.png";
 
 const InvestigacionEspecifica = () => {
   const { id } = useParams();
@@ -12,8 +24,13 @@ const InvestigacionEspecifica = () => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [usuario, setUsuario] = useState<any | null>(null);
   const [categoria, setCategoria] = useState<string | null>(null);
+  const [comentarios, setComentarios] = useState<any[]>([]);
+  const [comentario, setComentario] = useState<string>("");
+  const [calificacion, setCalificacion] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [usuarioLogueado, setUsuarioLogueado] = useState<any | null>(null);
 
+  // Cargar investigación y sus datos relacionados
   useEffect(() => {
     const cargarInvestigacion = async () => {
       try {
@@ -26,12 +43,10 @@ const InvestigacionEspecifica = () => {
           const imagenUrls = await cargarImagenes(data.imagenes);
           const pdf = data.pdfUrl ? await cargarPdf(data.pdfUrl) : null;
 
-          // Obtener el usuario que es el propietario de la investigación
           const usuarioRef = doc(db, "usuarios", data.idUsuario);
           const usuarioSnap = await getDoc(usuarioRef);
           const usuarioData = usuarioSnap.exists() ? usuarioSnap.data() : null;
 
-          // Obtener la categoría de la investigación
           const categoriaRef = doc(db, "categorias", data.categoria);
           const categoriaSnap = await getDoc(categoriaRef);
           const categoriaData = categoriaSnap.exists()
@@ -57,6 +72,78 @@ const InvestigacionEspecifica = () => {
     cargarInvestigacion();
   }, [id]);
 
+  // Cargar comentarios en tiempo real
+  useEffect(() => {
+    const cargarComentarios = () => {
+      try {
+        if (!id) return;
+        const comentariosQuery = query(
+          collection(db, "comentarios"),
+          where("id_investigacion", "==", id)
+        );
+
+        // Usar onSnapshot para escuchar cambios en tiempo real
+        const unsubscribe = onSnapshot(
+          comentariosQuery,
+          async (comentariosSnap) => {
+            const comentariosData = comentariosSnap.docs.map((doc) =>
+              doc.data()
+            );
+
+            const comentariosConUsuario = await Promise.all(
+              comentariosData.map(async (comentario) => {
+                const usuarioRef = doc(db, "usuarios", comentario.id_usuario);
+                const usuarioSnap = await getDoc(usuarioRef);
+                const usuarioData = usuarioSnap.exists()
+                  ? usuarioSnap.data()
+                  : null;
+
+                let fotoDescargada = "";
+                const fotoURL = usuarioData?.fotoURL || "";
+
+                // Verificar si la URL de la foto es válida
+                if (fotoURL && fotoURL !== "") {
+                  if (fotoURL.includes("firebasestorage")) {
+                    // Si la URL es de Firebase Storage, obtener la URL de la imagen
+                    fotoDescargada = await getDownloadURL(
+                      ref(storage, fotoURL)
+                    );
+                  } else {
+                    // Si la URL no es de Firebase Storage (por ejemplo, URL externa), usarla directamente
+                    fotoDescargada = fotoURL;
+                  }
+                } else {
+                  // Si no hay foto, asignar una URL de imagen predeterminada
+                  fotoDescargada = "ruta-a-imagen-predeterminada.jpg"; // Cambiar por la ruta de una imagen predeterminada
+                }
+
+                return {
+                  ...comentario,
+                  nombre_usuario:
+                    usuarioData?.nombre || "Usuario no encontrado",
+                  fotoURL: fotoDescargada || "",
+                };
+              })
+            );
+
+            setComentarios(comentariosConUsuario);
+          }
+        );
+
+        return unsubscribe; // Esto se llama para limpiar la suscripción cuando el componente se desmonte
+      } catch (error) {
+        console.error("Error al cargar los comentarios:", error);
+      }
+    };
+
+    const unsubscribe = cargarComentarios();
+
+    // Limpiar la suscripción cuando el componente se desmonte
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
+  }, [id]);
+
   const cargarImagenes = async (imagenes: string[]) => {
     const imagenUrls: string[] = [];
     for (const imagen of imagenes) {
@@ -70,6 +157,49 @@ const InvestigacionEspecifica = () => {
   const cargarPdf = async (pdfUrl: string) => {
     const pdfRef = ref(storage, pdfUrl);
     return await getDownloadURL(pdfRef);
+  };
+
+  const agregarComentario = async () => {
+    if (comentario.trim() && calificacion !== null && usuarioLogueado) {
+      try {
+        const user = usuarioLogueado;
+
+        await addDoc(collection(db, "comentarios"), {
+          id_investigacion: id,
+          id_usuario: user.idUsuario,
+          contenido_comentario: comentario,
+          fecha_comentario: new Date(),
+          calificacion: calificacion,
+        });
+
+        setComentario("");
+        setCalificacion(null);
+      } catch (error) {
+        console.error("Error al agregar comentario:", error);
+      }
+    } else {
+      alert("Debe estar logueado para comentar.");
+    }
+  };
+
+  const obtenerUsuarioLogueado = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      setUsuarioLogueado({
+        idUsuario: user.uid,
+        nombre: user.displayName || "Usuario sin nombre",
+        fotoURL: user.photoURL || "",
+      });
+    }
+  };
+
+  useEffect(() => {
+    obtenerUsuarioLogueado();
+  }, []);
+
+  const handleStarClick = (index: number) => {
+    setCalificacion(index + 1);
   };
 
   if (loading) {
@@ -88,10 +218,28 @@ const InvestigacionEspecifica = () => {
         <h1 className="investigacion-especifica-titulo">
           {investigacion.titulo}
         </h1>
-        {/* Información del propietario y descripción */}
+
         {usuario && (
           <div className="investigacion-especifica-info-container">
-            <h4>Investigador: {usuario.nombre}</h4>
+            <h4>
+              Investigador:
+              {usuario.fotoURL ? (
+                <img
+                  src={usuario.fotoURL}
+                  alt="Foto del investigador"
+                  className="foto-usuario"
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                />
+              ) : (
+                <span>No hay foto disponible</span>
+              )}
+              {usuario.nombre}
+            </h4>
             <p>
               <strong>Sobre el propietario:</strong> {usuario.descripcion}
             </p>
@@ -103,60 +251,110 @@ const InvestigacionEspecifica = () => {
               <strong>Email: </strong>
               {usuario.email}
             </p>
-
             <div className="investigacion-especifica-descripcion-info">
               <h4>Descripción:</h4>
               <p>{investigacion.descripcion}</p>
             </div>
           </div>
         )}
-        {/* Categoría */}
-        <div className="investigacion-especifica-categoria-info">
-          <h4>Categoría:</h4>
+
+        <div className="imagenes-container">
+          {imagenes.length > 0 ? (
+            imagenes.map((imagenUrl, index) => (
+              <img
+                key={index}
+                src={imagenUrl}
+                alt={`Imagen de investigación ${index + 1}`}
+                className="imagen-investigacion"
+              />
+            ))
+          ) : (
+            <p>No hay imágenes disponibles.</p>
+          )}
+        </div>
+
+        {pdfUrl ? (
+          <div className="pdf-container">
+            <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
+              Ver o descargar el PDF
+            </a>
+          </div>
+        ) : (
+          <p>No hay PDF disponible.</p>
+        )}
+
+        <div className="categoria-container">
+          <strong>Categoría: </strong>
           <p>{categoria}</p>
         </div>
-        {/* Carrusel de imágenes */}
-        <div className="investigacion-especifica-imagenes-container">
-          <h4>Imágenes relacionadas:</h4>
-          <div className="row">
-            {imagenes.slice(0, 6).map((imagen, index) => (
-              <div className="col-md-4 col-sm-6" key={index}>
-                <div className="investigacion-especifica-imagen-item">
-                  <img
-                    src={imagen}
-                    alt={`Imagen ${index + 1}`}
-                    className="investigacion-especifica-imagen img-fluid"
-                  />
-                </div>
-              </div>
+
+        <h1 className="investigacion-especifica-titulo">
+          ¿Deseas agregar un comentario?
+        </h1>
+
+        <div>
+          <label>Calificación:</label>
+          <div className="stars-container">
+            {[...Array(5)].map((_, index) => (
+              <img
+                key={index}
+                src={index < (calificacion || 0) ? fullStar : emptyStar}
+                alt={
+                  index < (calificacion || 0)
+                    ? "Estrella llena"
+                    : "Estrella vacía"
+                }
+                className="star-icon"
+                onClick={() => handleStarClick(index)}
+                style={{
+                  width: "30px", // Ajusta el tamaño según sea necesario
+                  cursor: "pointer", // Para indicar que es clickeable
+                }}
+              />
             ))}
           </div>
         </div>
-        <h3 style={{ color: "Black", textAlign: "center" }}>
-          ¿Interesado en la investigacion?
-        </h3>
-        {/* Visualización del PDF */}
-        {pdfUrl && (
-          <div className="investigacion-especifica-pdf-container">
-            <a
-              href={pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              Ver PDF
-            </a>
+
+        {usuarioLogueado && (
+          <div className="comentario-input-container">
+            <textarea
+              value={comentario}
+              onChange={(e) => setComentario(e.target.value)}
+              placeholder="Escribe tu comentario..."
+            />
+            <button onClick={agregarComentario}>Agregar comentario</button>
           </div>
         )}
-        {/* Recomendaciones y Conclusiones */}
-        <div className="investigacion-especifica-recomendaciones-container">
-          <h4>Recomendaciones:</h4>
-          <p>{investigacion.recomendaciones || "No disponibles"}</p>
-        </div>
-        <div className="investigacion-especifica-conclusiones-container">
-          <h4>Conclusión:</h4>
-          <p>{investigacion.conclusion || "No disponible"}</p>
-        </div>
+
+        <h3>Comentarios:</h3>
+        {comentarios.length > 0 ? (
+          comentarios.map((comentario, index) => (
+            <div key={index} className="comentario">
+              <h4>
+                <img
+                  src={comentario.fotoURL}
+                  alt="Foto de perfil"
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                />
+                {comentario.nombre_usuario}
+              </h4>
+              <p>{comentario.contenido_comentario}</p>
+              <p>Calificación: {comentario.calificacion} estrellas</p>
+              <p>
+                {new Date(
+                  comentario.fecha_comentario.toDate()
+                ).toLocaleDateString()}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>No hay comentarios aún.</p>
+        )}
       </div>
     </div>
   );
