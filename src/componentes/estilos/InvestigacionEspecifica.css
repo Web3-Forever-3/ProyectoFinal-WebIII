@@ -23,7 +23,15 @@
 /* Estilo para el título */
 .investigacion-especifica-titulo {
   text-align: center !important;
-  font-size: 2rem !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
+  margin-bottom: 20px !important;
+  color: #000000 !important;
+}
+
+.investigacion-especifica-titulo p {
+  text-align: center !important;
+  font-size: 20px !important;
   font-weight: bold !important;
   margin-bottom: 20px !important;
   color: #000000 !important;

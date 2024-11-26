@@ -288,9 +288,11 @@ const InvestigacionEspecifica = () => {
           <p>{categoria}</p>
         </div>
 
-        <h1 className="investigacion-especifica-titulo">
+        <h3 className="investigacion-especifica-titulo">
           ¿Deseas agregar un comentario?
-        </h1>
+          <br />
+          <p>¡Recuerda iniciar sesión para comentar!</p>
+        </h3>
 
         <div>
           <label>Calificación:</label>
@@ -315,16 +317,22 @@ const InvestigacionEspecifica = () => {
           </div>
         </div>
 
-        {usuarioLogueado && (
-          <div className="comentario-input-container">
-            <textarea
-              value={comentario}
-              onChange={(e) => setComentario(e.target.value)}
-              placeholder="Escribe tu comentario..."
-            />
-            <button onClick={agregarComentario}>Agregar comentario</button>
-          </div>
-        )}
+        {/* Mostrar el textarea y el botón siempre */}
+        <div className="comentario-input-container">
+          <textarea
+            value={comentario}
+            onChange={(e) => setComentario(e.target.value)}
+            placeholder="Escribe tu comentario..."
+            disabled={!usuarioLogueado} // Deshabilitar si no hay usuario logueado
+          />
+          <button onClick={agregarComentario} disabled={!usuarioLogueado}>
+            {" "}
+            {/* Deshabilitar si no hay usuario logueado */}
+            {usuarioLogueado
+              ? "Agregar comentario"
+              : "Inicia sesión para comentar"}
+          </button>
+        </div>
 
         <h3>Comentarios:</h3>
         {comentarios.length > 0 ? (

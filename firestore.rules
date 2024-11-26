@@ -5,7 +5,7 @@ service cloud.firestore {
 
     // Regla para la colección de comentarios
     match /comentarios/{comentarioId} {
-      // Permitir lectura de comentarios a cualquier usuario autenticado
+      // Permitir lectura de comentarios a cualquier usuario 
       allow read: if true;
       
       // Permitir la creación de comentarios solo si el usuario está autenticado
