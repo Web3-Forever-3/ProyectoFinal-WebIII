@@ -16,6 +16,7 @@ import "../estilos/InvestigacionEspecifica.css";
 
 import fullStar from "../estilos/imgs/full star.png";
 import emptyStar from "../estilos/imgs/empty star.png";
+import anonymousPicture from "../estilos/imgs/anonymous-man.png";
 
 const InvestigacionEspecifica = () => {
   const { id } = useParams();
@@ -99,7 +100,7 @@ const InvestigacionEspecifica = () => {
                   : null;
 
                 let fotoDescargada = "";
-                const fotoURL = usuarioData?.fotoURL || "";
+                const fotoURL = usuarioData?.fotoURL || anonymousPicture;
 
                 // Verificar si la URL de la foto es válida
                 if (fotoURL && fotoURL !== "") {
@@ -309,7 +310,7 @@ const InvestigacionEspecifica = () => {
                 className="star-icon"
                 onClick={() => handleStarClick(index)}
                 style={{
-                  width: "30px", // Ajusta el tamaño según sea necesario
+                  width: "30px",
                   cursor: "pointer", // Para indicar que es clickeable
                 }}
               />
@@ -341,7 +342,7 @@ const InvestigacionEspecifica = () => {
             <div key={index} className="comentario">
               <h4>
                 <img
-                  src={comentario.fotoURL}
+                  src={comentario.fotoURL || anonymousPicture}
                   alt="Foto de perfil"
                   style={{
                     width: "30px",
